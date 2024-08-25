@@ -3,5 +3,9 @@
 version = 3
 
 [[package]]
+name = "lib-neural-network"
+version = "0.1.0"
+
+[[package]]
 name = "shorelark"
 version = "0.1.0"
