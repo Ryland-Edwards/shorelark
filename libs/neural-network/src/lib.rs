@@ -10,8 +10,14 @@ pub struct Network {
 }
 
 impl Network {
-    pub fn random(layers: Vec<LayerTopology>) -> Self {
-        todo!("Implement random network generation")
+    pub fn random(layers: &[LayerTopology]) -> Self {
+        let layers = layers
+            .windows(2)
+            .map(|layers| Layer::random(layers[0].neurons, layers[1].neurons))
+            .collect();
+
+        Self {layers}
+
     }
 
     pub fn propagate(&self, mut inputs: Vec<f32>) -> Vec<f32> {
