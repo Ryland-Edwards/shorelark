@@ -22,7 +22,7 @@ impl Network {
 
     }
 
-    pub fn propagate(&self, mut inputs: Vec<f32>) -> Vec<f32> {
+    pub fn propagate(&self, inputs: Vec<f32>) -> Vec<f32> {
         self.layers
             .iter()
             .fold(inputs, |inputs, layer| layer.propagate(inputs))
