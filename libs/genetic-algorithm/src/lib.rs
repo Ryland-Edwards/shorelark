@@ -2,12 +2,16 @@
 
 pub struct GeneticAlgorithm;
 
+pub trait Individual {
+    fn fitness(&self) -> f32;
+}
+
+
 impl GeneticAlgorithm {
-    pub fn evolve<I>(
-        &self,
-        population: &[I],
-        evaluate_fitness: &dyn Fn(&I) -> f32,
-    ) -> Vec<I> {
+    pub fn evolve<I>(&self, population: &[I]) -> Vec<I>
+        where
+            I: Individual,
+        {
         assert!(!population.is_empty());
 
         (0..population.len())
@@ -18,4 +22,10 @@ impl GeneticAlgorithm {
             })
             .collect()
     }
+}
+
+pub trait SelectionMethod{
+    fn select<'a,I>(&self, population: &'a [I]) -> &'a I
+        where
+            I: Individual;
 }
