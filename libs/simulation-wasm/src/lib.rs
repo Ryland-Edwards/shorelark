@@ -1,7 +1,7 @@
 use lib_simulation as sim;
 use rand::prelude::*;
 use wasm_bindgen::prelude::*;
-use lib_simulation::Food;
+use lib_simulation::Food; //as FD;
 
 #[wasm_bindgen]
 pub struct Simulation {
